@@ -4,7 +4,7 @@ let mongoose = require('mongoose');
 let DEvent = require('./models/event.js');
 let seedDB = require('./seeds.js');
 
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 8080;
 
 let app = express();
 app.use(bodyParser.urlencoded({extended: true}));
