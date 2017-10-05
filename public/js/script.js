@@ -17,7 +17,7 @@ function processInput() {
   // Agora, se o input contém 2 caracteres ou mais, porém os dois primeiros caracteres são iguais aos dois primeiros armazenados atualmente, quer dizer
   // que temos os eventos que podem dar match disponíveis no array deventsNames e não precisamos acessar o BD, bastando procurar no próprio array.
   else if(searchInput.value.length >= 2 && searchInput.value.substring(0,2) == currentTwoLetters) {
-    var subListDeventsNames = [];
+    let subListDeventsNames = [];
     clearLis();
     deventsNames.forEach(function(deventName) {
       if(deventName.substring(0, searchInput.value.length) == searchInput.value.toLowerCase()) {
@@ -66,8 +66,8 @@ function clearLis() {
 
 function makeList(items) {
   items.forEach(function(i) {
-    var str1 = searchInput.value.toLowerCase();
-    var str2 = i.substring(searchInput.value.length);
+    let str1 = searchInput.value.toLowerCase();
+    let str2 = i.substring(searchInput.value.length);
     let strong = document.createElement("strong");
     strong.appendChild(document.createTextNode(str2));
     let li = document.createElement("li");

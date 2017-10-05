@@ -1,12 +1,12 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var DEvent = require('./models/event.js');
-var seedDB = require('./seeds.js');
+let express = require('express');
+let bodyParser = require('body-parser');
+let mongoose = require('mongoose');
+let DEvent = require('./models/event.js');
+let seedDB = require('./seeds.js');
 
-var port = process.env.PORT || 8080;
+let port = process.env.PORT || 3000;
 
-var app = express();
+let app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 
@@ -21,9 +21,9 @@ mongoose.connect(process.env.MONGODB_URI);
 
 /* POST - armazena evento no banco de dados */
 app.post('/api/event/register', function(req, res) {
-  var eventName = req.body.eventName.toLowerCase();
-  var timestamp = req.body.timestamp;
-  var dEvent = {dEvent: eventName, timestamp: timestamp};
+  let eventName = req.body.eventName.toLowerCase();
+  let timestamp = req.body.timestamp;
+  let dEvent = {dEvent: eventName, timestamp: timestamp};
   DEvent.create(dEvent, function(err, newlyCreated) {
     if(err) {
       console.log(err);
