@@ -4,12 +4,13 @@ var mongoose = require('mongoose');
 var DEvent = require('./models/event.js');
 var seedDB = require('./seeds.js');
 
+var port = process.env.PORT || 8080;
+
 var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 
-mongoose.connect("mongodb://localhost/desafio_dito");
-//mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI);
 
 //seedDB(100000);
 
@@ -45,6 +46,6 @@ app.get('/api/event/search/:str', function(req, res) {
   });
 });
 
-app.listen(8080, "localhost", function() {
+app.listen(port, function() {
   console.log("Server is running... ");
 });
