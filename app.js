@@ -10,15 +10,15 @@ app.use(express.static(__dirname + "/public"));
 
 mongoose.connect("mongodb://localhost/desafio_dito");
 
-//seedDB(10);
+//seedDB(10000);
 
 
 /////////////////
 // ROUTES
 ////////////////
 
-/* POST */
-app.post('/api/event', function(req, res) {
+/* POST - armazena evento no banco de dados */
+app.post('/api/event/register', function(req, res) {
   var eventName = req.body.eventName.toLowerCase();
   var timestamp = req.body.timestamp;
   var dEvent = {dEvent: eventName, timestamp: timestamp};
@@ -32,10 +32,12 @@ app.post('/api/event', function(req, res) {
   });
 });
 
-app.get('/api/event/:str', function(req, res) {
+/* GET - seleciona eventos cujo nome começa com uma determina string */
+app.get('/api/event/search/:str', function(req, res) {
   DEvent.find({"dEvent": new RegExp('^' + req.params.str)}).select('dEvent').exec(function(err, devents) {
     if(err) {
-      console.log(err);
+      console.log(err)
+      res.status(400).json(err);
     }
     else {
       res.status(200).json(devents);

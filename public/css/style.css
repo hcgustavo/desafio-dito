@@ -9,7 +9,17 @@ h1 {
 
 ul {
   list-style-type: none;
-  padding: 0 15px;
+  padding: 0;
+}
+
+li {
+  font-size: 1.1em;
+  padding-left: 15px;
+}
+
+li:hover {
+  background-color: #f2f2f2;
+  cursor: default;
 }
 
 .logo {
