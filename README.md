@@ -15,4 +15,12 @@ A API contém dois endpoints:
 AUTOCOMPLETE
 ---
 Para a página de autocomplete, foram utilizados somente HTML, CSS e Javascript puros.
+<br>
 A página encontra-se em public/index.html e public/css/style.css e o script da funcionalidade de autocomplete encontra-se em public/js/script.js
+
+MOCK DATA
+---
+Para o teste das funcionalidades, o banco de dados foi populado com 93.915 eventos gerados aleatoriamente através da função seedDB().
+<br>
+Os eventos têm os seguintes nomes: login, buy, rent, cancel, clickeditem, watchedmovie, watchedseries, watchedconcert, commented, rated, searchedmovie,
+searchedseries, searchedconcert

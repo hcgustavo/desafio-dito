@@ -10,7 +10,7 @@ suggestionsDiv.style.display = "none";
 function processInput() {
   // Se o input do usário contém 2 caracteres ou mais, e os dois primeiros caracteres do input não correspodem aos atuais dois carecteres dos eventos armazenados
   // no array deventsNames, então precisamos acessar o banco de dados para obter os eventos.
-  if(searchInput.value.length >= 2 && searchInput.value.substring(0,2) != currentTwoLetters) {
+  if(searchInput.value.length >= 2 && (searchInput.value.substring(0,2) != currentTwoLetters || deventsNames.length == 0)) {
     xhttp.open("GET", "http://localhost:8080/api/event/search/" + searchInput.value.toLowerCase(), true);
     xhttp.send();
   }
@@ -42,11 +42,7 @@ xhttp.onreadystatechange = function() {
   if(this.readyState == 4 && this.status == 200) {
     deventsNames = [];
     currentTwoLetters = searchInput.value.substring(0,2);
-    let results = JSON.parse(this.responseText);
-    results.forEach(function(devent) {
-      deventsNames.push(devent.dEvent);
-    });
-    deventsNames = uniq(deventsNames);
+    deventsNames = JSON.parse(this.responseText);
 
     if(deventsNames.length != 0) {
       clearLis();
@@ -66,11 +62,6 @@ function clearLis() {
   while(suggestionsUl.firstChild) {
     suggestionsUl.removeChild(suggestionsUl.firstChild);
   }
-}
-
-/* Retorna um outro array sem elementos repetidos */
-function uniq(a) {
-  return Array.from(new Set(a));
 }
 
 function makeList(items) {

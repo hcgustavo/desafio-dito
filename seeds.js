@@ -22,8 +22,7 @@ function seedDB(numEvents) {
       console.log(err);
       return;
     }
-
-    console.log("Seeding DB...");
+    
     events.forEach(function(ev, index) {
       DEvent.create(ev, function(err, newEvent) {
         if(err) {
@@ -31,10 +30,6 @@ function seedDB(numEvents) {
         }
 
       });
-
-      if(index == events.length - 1) {
-        console.log("Seeding is finished");
-      }
     });
   });
 

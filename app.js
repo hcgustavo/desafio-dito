@@ -9,8 +9,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 
 mongoose.connect("mongodb://localhost/desafio_dito");
+//mongoose.connect(process.env.MONGODB_URI);
 
-//seedDB(10000);
+//seedDB(100000);
 
 
 /////////////////
@@ -34,13 +35,12 @@ app.post('/api/event/register', function(req, res) {
 
 /* GET - seleciona eventos cujo nome começa com uma determina string */
 app.get('/api/event/search/:str', function(req, res) {
-  DEvent.find({"dEvent": new RegExp('^' + req.params.str)}).select('dEvent').exec(function(err, devents) {
+  DEvent.distinct("dEvent", {dEvent: new RegExp('^' + req.params.str)}, function(err, results) {
     if(err) {
-      console.log(err)
       res.status(400).json(err);
     }
     else {
-      res.status(200).json(devents);
+      res.status(200).json(results);
     }
   });
 });
