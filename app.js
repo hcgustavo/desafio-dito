@@ -36,7 +36,7 @@ app.post('/api/event/register', function(req, res) {
 
 /* GET - seleciona eventos cujo nome começa com uma determina string */
 app.get('/api/event/search/:str', function(req, res) {
-  DEvent.distinct("dEvent", {dEvent: new RegExp('^' + req.params.str)}, function(err, results) {
+  DEvent.distinct("dEvent", {dEvent: new RegExp('^' + req.params.str), {dEvent: 1}}, function(err, results) {
     if(err) {
       res.status(400).json(err);
     }
