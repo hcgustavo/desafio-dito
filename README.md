@@ -20,7 +20,7 @@ A página encontra-se em public/index.html e public/css/style.css e o script da 
 
 MOCK DATA
 ---
-Para o teste das funcionalidades, o banco de dados foi populado com 93.915 eventos gerados aleatoriamente através da função seedDB().
+Para o teste das funcionalidades, o banco de dados foi populado com 201.399 eventos gerados aleatoriamente através da função seedDB().
 <br>
 Os eventos têm os seguintes nomes: login, buy, rent, cancel, clickeditem, watchedmovie, watchedseries, watchedconcert, commented, rated, searchedmovie,
 searchedseries, searchedconcert
